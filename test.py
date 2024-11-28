@@ -6,10 +6,9 @@ def get_weather_data():
   Fetches weather data for a user-specified city using the OpenWeatherMap API.
 
   Returns:
-    A dictionary containing the weather data or None if an error occurs.
+    A tuple containing the city name and the weather data dictionary, or None if an error occurs.
   """
 
-  # Get user input for city
   city = input("Enter the city name: ")
 
   # Replace 'YOUR_API_KEY' with your actual API key
@@ -19,24 +18,25 @@ def get_weather_data():
 
   try:
     response = requests.get(url)
-    response.raise_for_status()  # Raise an exception for unsuccessful requests
+    response.raise_for_status()  # Raise an 1  exception for unsuccessful requests
 
     data = response.json()
-    return data  # Return the weather data if successful
+    return city, data  # Return the city name and weather data
 
   except requests.exceptions.RequestException as e:
     print(f"Error: An error occurred while fetching weather data: {e}")
-    return None  # Return None on error
+    return None, None  # Return None on error
 
   except KeyError as e:
     print(f"Error: Missing key in API response: {e}")
-    return None  # Return None on error
+    return None, None  # Return None on error
 
-def display_weather(data , city):
+def display_weather(city, data):
   """
   Displays the weather information in a user-friendly format.
 
   Args:
+    city: The city name for which the weather was fetched.
     data: A dictionary containing the weather data.
   """
 
@@ -59,6 +59,5 @@ def display_weather(data , city):
     print("No weather data found for the specified city.")
 
 if __name__ == "__main__":
-  weather_data = get_weather_data()
-  display_weather(weather_data,city)
-
+  city, weather_data = get_weather_data()
+  display_weather(city, weather_data)
