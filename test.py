@@ -2,16 +2,9 @@ import requests
 import json
 
 def get_weather_data():
-  """
-  Fetches weather data for a user-specified city using the OpenWeatherMap API.
-
-  Returns:
-    A tuple containing the city name and the weather data dictionary, or None if an error occurs.
-  """
 
   city = input("Enter the city name: ")
 
-  # Replace 'YOUR_API_KEY' with your actual API key
   api_key = '3a97089cb79affdfc9b0f748d7a4e9b2'
 
   url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
@@ -33,8 +26,6 @@ def get_weather_data():
 
 def display_weather(city, data):
   """
-  Displays the weather information in a user-friendly format.
-
   Args:
     city: The city name for which the weather was fetched.
     data: A dictionary containing the weather data.
