@@ -3,7 +3,7 @@ import json
 
 # Replace 'YOUR_API_KEY' with your actual API key
 api_key = '3a97089cb79affdfc9b0f748d7a4e9b2'
-city = 'Sudan'
+city = 'Guwahati'
 
 url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
 
@@ -17,6 +17,9 @@ try:
   temperature = data['main']['temp']
   humidity = data['main']['humidity']
   description = data['weather'][0]['description']
+  wind_speed = data['wind']['speed']
+  pressure = data['main']['pressure']
+  visibility = data['visibility']
 
   # Convert temperature to Celsius (optional)
   celsius = temperature - 273.15
@@ -24,7 +27,9 @@ try:
   print(f"Temperature: {celsius:.2f}°C")
   print(f"Humidity: {humidity}%")
   print(f"Weather Description: {description}")
-
+  print(f"Wind Speed: {wind_speed} m/s")
+  print(f"Pressure: {pressure} hPa")
+  print(f"Visibility: {visibility} m")
 except requests.exceptions.RequestException as e:
   print(f"Error: An error occurred while fetching weather data: {e}")
 
