@@ -5,7 +5,7 @@ def get_weather_data():
 
   city = input("Enter the city name: ")
 
-  api_key = '3a97089cb79affdfc9b0f748d7a4e9b2'
+  api_key = 'Api'
 
   url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
 
