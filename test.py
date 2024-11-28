@@ -24,9 +24,10 @@ try:
   # Convert temperature to Celsius (optional)
   celsius = temperature - 273.15
 
+  print(f"Weather in {city}:")
   print(f"Temperature: {celsius:.2f}°C")
   print(f"Humidity: {humidity}%")
-  print(f"Weather Description: {description}")
+  print(f"Description: {description}")
   print(f"Wind Speed: {wind_speed} m/s")
   print(f"Pressure: {pressure} hPa")
   print(f"Visibility: {visibility} m")
